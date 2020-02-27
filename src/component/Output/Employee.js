@@ -5,8 +5,8 @@ class Employee extends Component {
         console.log("malay")
         
         console.log(this.props.usersData)
-        return (<div style={{backgroundColor:'lightgreen',marginLeft:'36%',marginRight:'34%'}}>
-            <table border={4}>
+        return (<div>
+            <table border={4} style={{ border:'ridge 5px red' , backgroundColor:'#04346c', color:'#FFF' ,marginLeft:'40%'}}>
                 <thead >
                     <tr>
                         <th>Id</th>

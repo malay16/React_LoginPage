@@ -1,14 +1,14 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import classes from './Login.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Input from '../component/Input/Input';
 import * as actions from '../store/action/login'
-import { Route } from 'react-router';
-import EmployeePage from '../component/Output/EmployeePage';
+
 
 
 
 class Login extends Component {
+    
     state = {
         controls: {
 
@@ -43,8 +43,12 @@ class Login extends Component {
                 errorMessage: "Please Enter Valid Password"
             }
         },
+        validationMessage: "",
 
-        
+    }
+
+    componentWillReceiveProps(newProps){
+        console.log("ComponentwillRecieve Props",newProps)
     }
 
     checkValidity(value, rules) {
@@ -90,7 +94,7 @@ class Login extends Component {
         this.setState({ controls: updatedControls })
     }
 
-  
+
     submitHandler = (event) => {
         event.preventDefault();
         this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
@@ -99,13 +103,20 @@ class Login extends Component {
         console.log(this.state)
         console.log("****************************************")
         console.log(this.props.errorResult)
-        if(this.props.errorResult){
-        console.log(this.props.errorResult,"value of error")
-        this.props.history.push('/EmployeePage') 
-    }
+        setTimeout(() => {
+            if (!this.props.errorResult) {
+                this.props.history.push('/EmployeePage')
+                
+            }
+            if (this.props.errorResult) {
+                this.setState({validationMessage:"Invalid Credential"})
+            }
+        }, 200);
+        
     }
 
-   
+    
+
     render() {
         const formElememntArray = [];
         for (let key in this.state.controls) {
@@ -136,20 +147,21 @@ class Login extends Component {
         if (this.props.error) {
 
             errorMessage = (
-                <p style={{color:'white'}}>{this.props.error.message}</p>
+                <p style={{ color: 'white' }}>{this.props.error.message}</p>
             )
         }
 
         return (
 
             <div className={classes.Login} >
+            <strong><p>WELCOME TO LOGIN PAGE</p></strong>
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <button >Submit</button>
                 </form>
-                
-           
+                {<p style={{color:'red'}}>{this.state.validationMessage}</p>}
+
             </div>
 
         );
@@ -159,7 +171,7 @@ class Login extends Component {
 }
 
 const mapStatetoProps = state => {
-    console.log("Runing Map to Props",state)
+    console.log("Runing Map to Props", state)
     return {
         errorResult: state.error
     }

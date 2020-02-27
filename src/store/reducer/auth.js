@@ -4,7 +4,7 @@ import * as actionTypes from '../action/actionTypes';
 
 const initailState={
    
-    error:false,
+    error:null,
     login:{  "username":"hruday@gmail.com","password" :'hruday123' }
 
 }
