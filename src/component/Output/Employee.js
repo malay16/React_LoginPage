@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class Employee extends Component {
     render() {
         console.log("malay")
+        
         console.log(this.props.usersData)
         return (<div style={{backgroundColor:'lightgreen',marginLeft:'36%',marginRight:'34%'}}>
             <table border={4}>
