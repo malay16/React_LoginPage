@@ -7,5 +7,6 @@ export const PURCHASE_BURGER_START='PURCHASE_BURGER_START';
 
 
 export const AUTH='AUTH'
+export const AUTHPASSWORD='AUTHPASSWORD'
 
 

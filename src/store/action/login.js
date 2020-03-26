@@ -12,5 +12,12 @@ export const auth=(email,password)=>{
     }
 }
 
-
+export const authPassword=(email,mobile,password)=>{
+    return{
+        type:actionTypes.AUTHPASSWORD,
+        email:email,
+        mobile:mobile,
+        password:password
+    }
+}
 

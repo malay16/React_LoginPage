@@ -27,11 +27,28 @@ class Login extends Component {
                 touched: false,
                 errorMessage: "Please Enter valid Email Address"
             },
+            mobileNumber: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Mobile Number'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 10,
+                    maxLength: 10,
+                    isNumeric: true
+                },
+                valid: false,
+                touched: false,
+                errorMessage: "Please Enter valid Mobile Number"
+            },
             password: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: ' Enter your New Password'
                 },
                 value: '',
                 validation: {
@@ -72,6 +89,10 @@ class Login extends Component {
             isValid = pattern.test(value) && isValid;
         }
 
+        if ( rules.isNumeric ) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test( value ) && isValid
+        }
         return isValid;
     }
 
@@ -97,7 +118,7 @@ class Login extends Component {
 
     submitHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+        this.props.onAuthPass(this.state.controls.email.value, this.state.controls.mobileNumber.value,this.state.controls.password.value)
         console.log("****************************************")
         console.log(this.props)
         console.log(this.state)
@@ -115,10 +136,7 @@ class Login extends Component {
         
     }
 
-    passwordReset=()=>{
-        
-        this.props.history.push('/passwordReset')
-    }
+    
 
     render() {
         const formElememntArray = [];
@@ -159,14 +177,14 @@ class Login extends Component {
         return (
 
             <div className={classes.Login} >
-            <strong><p>WELCOME TO LOGIN PAGE</p></strong>
+            <strong><p>WELCOME TO PASSWORD RESET PAGE</p></strong>
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     {form}
                     <button >Submit</button>
                 </form>
                 {<p style={{color:'red'}}>{this.state.validationMessage}</p>}
-                <button onClick={this.passwordReset}>Password Reset</button>
+
 
             </div>
 
@@ -185,7 +203,7 @@ const mapStatetoProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password))
+        onAuthPass: (email, mobile,password) => dispatch(actions.authPassword(email,mobile, password))
     }
 }
 
