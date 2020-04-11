@@ -3,6 +3,7 @@
     width:100%;
     padding:10px;
     box-sizing: border-box;
+    
 }
 
 .Label{
@@ -14,12 +15,14 @@
 .InputElement{
     outline:none;
     border:1px solid #ccc;
-    background-color: white;
+    background-color: rgba(70, 167, 210, 0.39)  ;
     font:inherit;
-    padding:6px 10px;
+    padding:15px 10px;
     display: block;
-    width: 100% ;
+    width: 40% ;
     box-sizing:border-box;
+    border-radius: 25px;
+    margin-left: 30%;
 }
 
 .InputElement:focus {

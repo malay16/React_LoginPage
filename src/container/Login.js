@@ -159,15 +159,16 @@ class Login extends Component {
         return (
 
             <div className={classes.Login} >
-            <strong><p>WELCOME TO LOGIN PAGE</p></strong>
+                <center><strong><p style={{"color":"white"}}>WELCOME TO LOGIN PAGE</p></strong></center>
                 {errorMessage}
-                <form onSubmit={this.submitHandler}>
+                <form style={{"paddingTop":"100px"}} onSubmit={this.submitHandler}>
                     {form}
-                    <button >Submit</button>
+                    
+                    <button style={{"borderRadius":"25px","backgroundColor":"#D82F0A","width":"37%","margin":"30px"}} >Submit</button>
                 </form>
                 {<p style={{color:'red'}}>{this.state.validationMessage}</p>}
-                <button onClick={this.passwordReset}>Password Reset</button>
-
+               
+            
             </div>
 
         );
