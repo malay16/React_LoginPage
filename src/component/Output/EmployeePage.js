@@ -26,7 +26,9 @@ class EmployeePage extends Component{
                 <center>
                 <p>The Employee Data Page</p>
                 </center>
+                <div style={{"marginRight":"36%"}}>
                 <Employee usersData={this.state.user}></Employee>
+                </div>
                 </div>
             )
         }}

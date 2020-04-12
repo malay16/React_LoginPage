@@ -33,7 +33,7 @@ class Employee extends Component {
                             <td>{item.id}</td>
                             <td>{formatDate(new Date(item.createdAt))}</td>
                             <td>{item.name}</td>
-                            <td>{item.avatar}</td>
+                    <td><a href={item.avatar} target="_blank" style={{"color":"white"}}>{item.avatar}</a></td>
                            
                         </tr>
                     ))}
